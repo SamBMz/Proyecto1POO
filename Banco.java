@@ -1,44 +1,49 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-
 public class Banco {
     int numSucursales;
-    List<Sucursal> sucursales;
-    public Banco(){
-        sucursales = new ArrayList<>();
-        for(int i = 0; i < 3; i++)
-            sucursales.add(new Sucursal());
+    List<HashMap<String, Object>> sucursales; // Cambio de Sucursal a HashMap<String, Object>
 
+    public Banco() {
+        sucursales = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+            sucursales.add(new HashMap<String, Object>()); // Crear HashMap vacío
     }
-    public Banco(int numSucursales){
+
+    public Banco(int numSucursales) {
         this.numSucursales = numSucursales;
         sucursales = new ArrayList<>();
-        while(numSucursales-- > 0)
-            sucursales.add(new Sucursal());
+        while (numSucursales-- > 0)
+            sucursales.add(new HashMap<String, Object>()); // Crear HashMap vacío
     }
 
-    public void agregarSucursal(){
-        sucursales.add(new Sucursal());
+    public void agregarSucursal() {
+        sucursales.add(new HashMap<String, Object>()); // Crear HashMap vacío
     }
-    public int getNumSucursales(){
+
+    public int getNumSucursales() {
         return numSucursales;
     }
-    public Sucursal getSucursal(int indexSucursal){
-        return sucursales.get(indexSucursal);
 
+    public HashMap<String, Object> getSucursal(int indexSucursal) { // Cambio de Sucursal a HashMap<String, Object>
+        return sucursales.get(indexSucursal);
     }
-    public Sucursal getSucursal(){
+
+    public HashMap<String, Object> getSucursal() { // Cambio de Sucursal a HashMap<String, Object>
         Random rnd = new Random();
         return sucursales.get(rnd.nextInt(numSucursales));
     }
-    public void mostrarSucursales(){
-        for(int i = 0; i < numSucursales; i++){
-            System.out.println(i + "-Sucursal " + sucursales.get(i).getNumSucursal());
+
+    public void mostrarSucursales() {
+        for (int i = 0; i < numSucursales; i++) {
+            System.out.println(i + "-Sucursal " + sucursales.get(i).get("numSucursal")); // Obtener el valor de la clave "numSucursal" del HashMap
         }
     }
-    public void mostrarMenu(){
+
+    public void mostrarMenu() {
         System.out.println("\nBienvenido al menú de BBVA Bancomer 1_0_0_1");
         System.out.println("");
         System.out.println("---- Menú ----");
@@ -48,5 +53,5 @@ public class Banco {
         System.out.println("4. Mostrar información de un cliente");
         System.out.println("5. Salir del programa");
         System.out.print("Seleccione una opción: ");
-}
+    }
 }
