@@ -1,17 +1,16 @@
+package Cuenta;
 import java.util.Random;
+import Persona.Cliente;
 public abstract class Cuenta{
-    protected int numeroDeCuenta;
+    protected Cliente cliente;
+    protected String numeroDeCuenta;
     protected float saldo;
-    public Cuenta(float saldo){
+    protected Cuenta(Cliente cliente, String tipoCuenta, float saldo){
         Random rand = new Random();
-        this.numeroDeCuenta = rand.nextInt(Integer.MAX_VALUE);
+        numeroDeCuenta = ""+ cliente.getSucursal() + rand.nextInt(10000) + tipoCuenta + cliente.getFechaNacimiento()[2];
         this.saldo = saldo;
+        this.cliente = cliente;
     }
-    public Cuenta(){
-        
-    }
-    public abstract void depositar();
     public abstract float retirar();
     public abstract void visualizar();
-    
 }
